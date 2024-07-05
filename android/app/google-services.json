@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1076289879683",
+    "project_id": "mechanicapp-a10ab",
+    "storage_bucket": "mechanicapp-a10ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076289879683:android:a74aada7ed860a88a565b6",
+        "android_client_info": {
+          "package_name": "com.example.mechanic_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYVxZ4BNxe-ZGCvjlJODqvLS-bnIgMI4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
