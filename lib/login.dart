@@ -151,6 +151,7 @@ class _Login_Screen_2State extends State<Login_Screen_2> {
                     ),
                   ),
                 ),
+               
                 SizedBox(
                   height: _mediaQuery.size.height * .01,
                 ),
