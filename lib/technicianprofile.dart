@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:mechanic_app/editprofile.dart';
 import 'package:mechanic_app/login.dart';
 import 'package:mechanic_app/profilelist.dart';
+import 'package:mechanic_app/security.dart';
+import 'package:mechanic_app/setting.dart';
 
 class TechnicianProfile extends StatefulWidget {
   const TechnicianProfile({super.key});
@@ -13,7 +15,7 @@ class TechnicianProfile extends StatefulWidget {
 }
 
 class _TechnicianProfileState extends State<TechnicianProfile> {
-  bool value = false;
+  bool value1 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -155,11 +157,19 @@ class _TechnicianProfileState extends State<TechnicianProfile> {
                   text: 'Leaderboard',
                   text2: '\$1,490',
                   icon2: Icons.arrow_forward_ios_outlined),
-              ProfileList(
-                  icon: Icons.settings,
-                  text: 'Settings',
-                  text2: '',
-                  icon2: Icons.arrow_forward_ios_outlined),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Setting_Screen()));
+                },
+                child: ProfileList(
+                    icon: Icons.settings,
+                    text: 'Settings',
+                    text2: '',
+                    icon2: Icons.arrow_forward_ios_outlined),
+              ),
               Column(
                 children: [
                   Padding(
@@ -209,9 +219,9 @@ class _TechnicianProfileState extends State<TechnicianProfile> {
                                   Color.fromARGB(255, 211, 205, 205),
                               inactiveTrackColor:
                                   Color.fromARGB(255, 211, 205, 205),
-                              value: value,
+                              value: value1,
                               onChanged: (value) {
-                                value = value;
+                                value1 = value;
                                 setState(() {});
                               }),
                         )
@@ -234,11 +244,17 @@ class _TechnicianProfileState extends State<TechnicianProfile> {
               //     text2: '',
               //     icon2: Icons.switch_access_shortcut),
 
-              ProfileList(
-                  icon: Icons.verified_outlined,
-                  text: 'Security and Privicy',
-                  text2: '',
-                  icon2: Icons.arrow_forward_ios_outlined),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => PrivacyScreen()));
+                },
+                child: ProfileList(
+                    icon: Icons.verified_outlined,
+                    text: 'Security and Privicy',
+                    text2: '',
+                    icon2: Icons.arrow_forward_ios_outlined),
+              ),
               ProfileList(
                   icon: Icons.account_circle,
                   text: 'About',

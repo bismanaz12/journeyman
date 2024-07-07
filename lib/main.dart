@@ -6,6 +6,7 @@ import 'package:mechanic_app/newpassword.dart';
 import 'package:mechanic_app/passupdates.dart';
 import 'package:mechanic_app/security.dart';
 import 'package:mechanic_app/signup.dart';
+import 'package:mechanic_app/splashscreen.dart';
 import 'package:mechanic_app/technicianprofile.dart';
 import 'package:mechanic_app/userprovider.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 227, 225, 231)),
           useMaterial3: true,
         ),
-        home: TechnicianProfile());
+        home: Splash_Screen());
   }
 }
 

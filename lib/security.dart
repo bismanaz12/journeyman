@@ -8,7 +8,8 @@ class PrivacyScreen extends StatefulWidget {
 }
 
 class _PrivacyScreenState extends State<PrivacyScreen> {
-  bool value = false;
+  bool value1 = false;
+  bool value2 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +84,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                           ),
                         ),
                         Switch(
-                            value: value,
+                            value: value1,
                             onChanged: (value) {
-                              value = value;
+                              value1 = value;
                             }),
                       ],
                     ),
@@ -111,9 +112,9 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
                           ),
                         ),
                         Switch(
-                            value: value,
+                            value: value2,
                             onChanged: (value) {
-                              value = value;
+                              value2 = value;
                             }),
                       ],
                     ),
