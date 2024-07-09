@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class Enable_Buttom extends StatelessWidget {
-  const Enable_Buttom({
+  Enable_Buttom({
     super.key,
     required this.text,
   });
+  bool value1 = false;
   final String text;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,11 @@ class Enable_Buttom extends StatelessWidget {
           text,
           style: TextStyle(fontSize: 18),
         ),
-        Icon(Icons.abc_sharp)
+        Switch(
+            value: value1,
+            onChanged: (value) {
+              value1 = value;
+            }),
       ],
     );
   }

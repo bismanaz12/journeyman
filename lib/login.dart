@@ -4,10 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mechanic_app/editprofile.dart';
 import 'package:mechanic_app/forgot.dart';
 import 'package:mechanic_app/newpassword.dart';
 import 'package:mechanic_app/passupdates.dart';
 import 'package:mechanic_app/signup.dart';
+import 'package:mechanic_app/technicianprofile.dart';
 
 class Login_Screen_2 extends StatefulWidget {
   Login_Screen_2({super.key});
@@ -137,7 +139,7 @@ class _Login_Screen_2State extends State<Login_Screen_2> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ChangePasswordScreen()));
+                                builder: (context) => Editprofile()));
                       }
                     }
                   },

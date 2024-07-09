@@ -17,7 +17,7 @@ class _PrivacyScreenState extends State<PrivacyScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        toolbarHeight: media.size.height * 0.06,
+        toolbarHeight: media.size.height * 0.07,
         automaticallyImplyLeading: false,
         title: Row(
           children: [

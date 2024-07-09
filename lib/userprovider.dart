@@ -16,14 +16,14 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  changepass(String pass, String pass2) async {
-    log('user is:$user ');
-    if (pass == user!.pass) {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .update({'password': pass2});
-    }
-    notifyListeners();
-  }
+  // changepass(String pass, String pass2) async {
+  //   log('user is:$user ');
+  //   if (pass == user!.pass) {
+  //     await FirebaseFirestore.instance
+  //         .collection('users')
+  //         .doc(FirebaseAuth.instance.currentUser!.uid)
+  //         .update({'password': pass2});
+  //   }
+  //   notifyListeners();
+  // }
 }

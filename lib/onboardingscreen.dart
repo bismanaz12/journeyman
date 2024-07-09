@@ -37,12 +37,12 @@ class _Sign_Up_ScreenState extends State<Onboarding> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/whitebackground.jpg'),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets/images/whitebackground.jpg'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -56,7 +56,7 @@ class _Sign_Up_ScreenState extends State<Onboarding> {
                       width: _mediaQuery.size.width * .20,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/Garage Logo.jpg'),
+                          image: AssetImage('assets/images/logo.png'),
                           fit: BoxFit.fill,
                         ),
                       ),

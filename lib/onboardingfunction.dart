@@ -7,5 +7,5 @@ class Unboardingcontent {
 List<Unboardingcontent> contents = [
   Unboardingcontent(image: 'assets/images/Banner 1.jpg'),
   Unboardingcontent(image: 'assets/images/Banner 2.jpg'),
-  Unboardingcontent(image: 'assets/images/Banner 3.png'),
+  Unboardingcontent(image: 'assets/images/Banner 3.png'),
 ];
