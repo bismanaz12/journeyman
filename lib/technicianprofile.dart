@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mechanic_app/editprofile.dart';
+import 'package:mechanic_app/flowchart.dart';
 import 'package:mechanic_app/login.dart';
 import 'package:mechanic_app/profilelist.dart';
 import 'package:mechanic_app/security.dart';
@@ -157,9 +158,9 @@ class _TechnicianProfileState extends State<TechnicianProfile> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: media.size.height * 0.1,
-                      ),
+                      SizedBox(height: media.size.height*0.01,),
+                     BarChartSample8(),
+                      SizedBox(height: media.size.height*0.01,),
                       ProfileList(
                           icon: Icons.account_balance_wallet_outlined,
                           text: 'My Balance',

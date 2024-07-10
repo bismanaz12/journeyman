@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:mechanic_app/customerprofile.dart';
 import 'package:mechanic_app/editprofilecontainer.dart';
 import 'package:mechanic_app/imagepicker.dart';
+import 'package:mechanic_app/searchscreen.dart';
 import 'package:mechanic_app/technicianprofile.dart';
 import 'package:mechanic_app/usermodel.dart';
 import 'package:provider/provider.dart';
