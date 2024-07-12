@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mechanic_app/addtask.dart';
 import 'package:mechanic_app/editprofile.dart';
 import 'package:mechanic_app/firebase_options.dart';
 import 'package:mechanic_app/flowchart.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 227, 225, 231)),
           useMaterial3: true,
         ),
-        home: Splash_Screen());
+        home: AddTasks());
   }
 }
 
