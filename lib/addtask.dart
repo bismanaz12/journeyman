@@ -19,7 +19,7 @@ class AddTasks extends StatefulWidget {
 }
 
 class _AddTasksState extends State<AddTasks> {
-  bool photo = false;
+  bool photo = true;
   bool barcode = false;
 
   Future<List<String>> uploadImages(List<File> images) async {
@@ -117,7 +117,7 @@ class _AddTasksState extends State<AddTasks> {
               ),
             ),
             SizedBox(
-              width: media.size.height * 0.08,
+              width: media.size.height * 0.07,
             ),
             Consumer<ImagePickerProvider>(builder: (context, pro, _) {
               return InkWell(

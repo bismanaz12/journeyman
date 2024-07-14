@@ -1,11 +1,14 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mechanic_app/features.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:mechanic_app/features.dart' hide Taskmodel;
 import 'package:mechanic_app/taskmodel.dart';
+
 import 'package:uuid/uuid.dart';
 
 class Addnote extends StatefulWidget {
@@ -56,7 +59,18 @@ class _AddnoteState extends State<Addnote> {
               if (txt.isNotEmpty && widget.image.isNotEmpty) {
                 String id = Uuid().v4();
                 List url = await uploadImages(widget.image);
-                Taskmodel model = Taskmodel(photo: url, note: txt);
+                Taskmodel model = Taskmodel(
+                    time: DateTime.now(),
+                    taskId: id,
+                    photo: url,
+                    note: txt,
+                    productname: '',
+                    fuelefficiency: '',
+                    engineoil: '',
+                    enginetype: '',
+                    customerId: FirebaseAuth.instance.currentUser!.uid,
+                    horsepower: '',
+                    torque: '');
 
                 await FirebaseFirestore.instance
                     .collection('tasks')
@@ -67,7 +81,9 @@ class _AddnoteState extends State<Addnote> {
                   txt = '';
                 });
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Camera()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SpecificationScreen()));
               }
             },
             child: Align(
