@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:mechanic_app/customertask.dart';
 import 'package:mechanic_app/imagescreen.dart';
 import 'package:mechanic_app/taskmodel.dart';
 
@@ -106,9 +107,6 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
                                   .update({'productname': namecont.text});
 
                               // Clear text field after successful update
-                              namecont.text = '';
-                              // Update the UI again after the text field is cleared
-                              setState(() {});
                             }
                           } catch (e) {
                             print('Error updating document: $e');
@@ -598,7 +596,12 @@ class _SpecificationScreenState extends State<SpecificationScreen> {
                                 fixedSize: Size(_mediaQuery.size.height * 0.3,
                                     _mediaQuery.size.height * 0.04),
                                 shape: RoundedRectangleBorder()),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CusomterTask()));
+                            },
                             child: Text(
                               'Next',
                               style: TextStyle(

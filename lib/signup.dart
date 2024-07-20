@@ -214,6 +214,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                   await auth.createUserWithEmailAndPassword(
                                       email: email.text, password: pass.text);
                               Usermodel model = Usermodel(
+                                  cancel: [],
+                                  completion: [],
+                                  process: [],
                                   techId: '',
                                   image: '',
                                   bio: '',

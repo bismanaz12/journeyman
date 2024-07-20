@@ -1,3 +1,5 @@
+import 'dart:io';
+
 class Usermodel {
   String name;
   String id;
@@ -9,17 +11,25 @@ class Usermodel {
   String bio;
   String address;
   String techId;
-  Usermodel(
-      {required this.email,
-      required this.techId,
-      required this.id,
-      required this.name,
-      required this.pass,
-      required this.address,
-      required this.bio,
-      required this.image,
-      required this.persontype,
-      required this.service});
+  List<String> process;
+  List<String> completion;
+  List<String> cancel;
+
+  Usermodel({
+    required this.email,
+    required this.techId,
+    required this.id,
+    required this.name,
+    required this.pass,
+    required this.address,
+    required this.bio,
+    required this.image,
+    required this.persontype,
+    required this.process,
+    required this.completion,
+    required this.cancel,
+    required this.service,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -32,23 +42,28 @@ class Usermodel {
       'image': image,
       'service': service,
       'persontype': persontype,
-      'techId': techId
+      'techId': techId,
+      'completion': completion,
+      'cancel': cancel,
+      'process': process,
     };
   }
 
   factory Usermodel.fromMap(Map<String, dynamic> map) {
     return Usermodel(
-        email: map['email'],
-        id: map['id'],
-        name: map['name'],
-        pass: map['password'],
-        address: map['address'],
-        bio: map['bio'],
-        image: map['image'],
-        service: map['service'],
-        persontype: map['persontype'],
-        techId: map['techId']);
+      email: map['email'],
+      id: map['id'],
+      name: map['name'],
+      pass: map['password'],
+      address: map['address'],
+      bio: map['bio'],
+      image: map['image'],
+      service: map['service'],
+      persontype: map['persontype'],
+      techId: map['techId'],
+      completion: List<String>.from(map['completion'] ?? []),
+      cancel: List<String>.from(map['cancel'] ?? []),
+      process: List<String>.from(map['process'] ?? []),
+    );
   }
 }
-
-// enum personType { customer, technician }

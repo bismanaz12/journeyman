@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,6 +49,12 @@ class _AddnoteState extends State<Addnote> {
     return downloadUrls;
   }
 
+  String taskId() {
+    Random random = Random();
+    int randomNumber = 10000 + random.nextInt(90000);
+    return randomNumber.toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context);
@@ -59,7 +66,10 @@ class _AddnoteState extends State<Addnote> {
               if (txt.isNotEmpty && widget.image.isNotEmpty) {
                 String id = Uuid().v4();
                 List url = await uploadImages(widget.image);
+                String task = taskId();
                 Taskmodel model = Taskmodel(
+                    task: task,
+                    takeTask: false,
                     time: DateTime.now(),
                     taskId: id,
                     photo: url,

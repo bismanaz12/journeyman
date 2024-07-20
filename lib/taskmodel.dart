@@ -12,9 +12,12 @@ class Taskmodel {
   String engineoil;
   String taskId;
   DateTime time;
+  bool takeTask;
+  String task;
 
   Taskmodel(
       {required this.photo,
+      required this.task,
       required this.note,
       required this.customerId,
       required this.engineoil,
@@ -24,6 +27,7 @@ class Taskmodel {
       required this.productname,
       required this.torque,
       required this.time,
+      required this.takeTask,
       required this.taskId});
 
   Map<String, dynamic> tomap() {
@@ -38,7 +42,9 @@ class Taskmodel {
       'productname': productname,
       'torque': torque,
       'taskId': taskId,
-      'time': time
+      'time': time,
+      'takeTask': takeTask,
+      'task': task
     };
   }
 
@@ -54,6 +60,8 @@ class Taskmodel {
         enginetype: map['enginetype'],
         productname: map['productname'],
         taskId: map['taskId'],
+        takeTask: map['takeTask'],
+        task: map['task'],
         time: (map['time'] as Timestamp).toDate());
   }
 }

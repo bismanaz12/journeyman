@@ -586,6 +586,7 @@ class _EditprofileState extends State<Editprofile> {
                                 : model.name,
                             'address': addresscon.text,
                             'persontype': 'customer',
+                            'techId':'',
                             'bio': '',
                             'service': '',
                             'image': pro.image != null ? url : ''
