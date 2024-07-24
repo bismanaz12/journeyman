@@ -332,6 +332,13 @@ class TaskScreen extends StatelessWidget {
                                             .doc(model.taskId)
                                             .update({'takeTask': true});
                                         await FirebaseFirestore.instance
+                                            .collection('tasks')
+                                            .doc(model.taskId)
+                                            .update({
+                                          'techId': FirebaseAuth
+                                              .instance.currentUser!.uid
+                                        });
+                                        await FirebaseFirestore.instance
                                             .collection('users')
                                             .doc(FirebaseAuth
                                                 .instance.currentUser!.uid)
@@ -374,7 +381,7 @@ class TaskScreen extends StatelessWidget {
                             ),
                           );
                         });
-                  
+
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(

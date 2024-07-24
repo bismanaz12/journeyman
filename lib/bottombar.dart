@@ -11,7 +11,6 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  
   PageController controller = PageController();
 
   void onPageChanged(index) {

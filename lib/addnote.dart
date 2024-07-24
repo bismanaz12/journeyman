@@ -68,6 +68,7 @@ class _AddnoteState extends State<Addnote> {
                 List url = await uploadImages(widget.image);
                 String task = taskId();
                 Taskmodel model = Taskmodel(
+                    techId: '',
                     task: task,
                     takeTask: false,
                     time: DateTime.now(),

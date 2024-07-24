@@ -14,6 +14,7 @@ class Taskmodel {
   DateTime time;
   bool takeTask;
   String task;
+  String techId;
 
   Taskmodel(
       {required this.photo,
@@ -28,6 +29,7 @@ class Taskmodel {
       required this.torque,
       required this.time,
       required this.takeTask,
+      required this.techId,
       required this.taskId});
 
   Map<String, dynamic> tomap() {
@@ -44,7 +46,8 @@ class Taskmodel {
       'taskId': taskId,
       'time': time,
       'takeTask': takeTask,
-      'task': task
+      'task': task,
+      'techId': techId
     };
   }
 
@@ -62,6 +65,7 @@ class Taskmodel {
         taskId: map['taskId'],
         takeTask: map['takeTask'],
         task: map['task'],
+        techId: map['techId'],
         time: (map['time'] as Timestamp).toDate());
   }
 }

@@ -103,17 +103,26 @@ class _UpdateTaskState extends State<UpdateTask> {
                         width: media.size.height * 0.1,
                         color: Colors.amber,
                         child: Center(
-                          child: Text(
-                              ontrip
-                                  ? 'On Trip'
-                                  : inprocess
-                                      ? 'In Process'
-                                      : complete
-                                          ? 'Complete'
-                                          : pending
-                                              ? 'Pending'
-                                              : 'In Process',
-                              style: TextStyle(color: Colors.black)),
+                          child: StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection('users')
+                                  .doc(widget.model.techId)
+                                  .snapshots(),
+                              builder: (context, snapshot) {
+                                var tech = snapshot.data!.data();
+                                Usermodel user = Usermodel.fromMap(tech!);
+                                return Text(
+                                    user.pending.contains(widget.model.taskId)
+                                        ? 'Pending'
+                                        : user.ontrip
+                                                .contains(widget.model.taskId)
+                                            ? 'On Trip'
+                                            : user.completion.contains(
+                                                    widget.model.taskId)
+                                                ? 'Complete'
+                                                : 'In Process',
+                                    style: TextStyle(color: Colors.black));
+                              }),
                         ),
                       )
                     ],
@@ -172,47 +181,45 @@ class _UpdateTaskState extends State<UpdateTask> {
                   StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection('users')
-                          .doc(FirebaseAuth.instance.currentUser!.uid)
+                          .doc(widget.model.techId)
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
                           var data = snapshot.data!.data();
                           Usermodel user = Usermodel.fromMap(data!);
-                          if (user.process.contains(widget.model.taskId)) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: media.size.height * 0.03,
-                                    backgroundImage: NetworkImage(user.image),
+
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: media.size.height * 0.03,
+                                  backgroundImage: NetworkImage(user.image),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        user.name,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: media.size.height * 0.02),
+                                      ),
+                                      Text(
+                                        'ID:${user.techId}',
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 194, 193, 193)),
+                                      )
+                                    ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          user.name,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize:
-                                                  media.size.height * 0.02),
-                                        ),
-                                        Text(
-                                          'ID:${user.techId}',
-                                          style: TextStyle(
-                                              color: Color.fromARGB(
-                                                  255, 194, 193, 193)),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }
+                                ),
+                              ],
+                            ),
+                          );
                         }
                         return CircularProgressIndicator();
                       }),
@@ -424,12 +431,44 @@ class _UpdateTaskState extends State<UpdateTask> {
                                 ),
                                 InkWell(
                                   splashColor: Colors.white,
-                                  onTap: () {
+                                  onTap: () async {
                                     setState(() {
                                       pending = false;
                                       complete = false;
                                       inprocess = false;
                                       ontrip = !ontrip;
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'ontrip': FieldValue.arrayUnion(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'process': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'pending': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'complete': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
                                     });
                                   },
                                   child: Row(
@@ -462,12 +501,44 @@ class _UpdateTaskState extends State<UpdateTask> {
                                 ),
                                 InkWell(
                                   splashColor: Colors.white,
-                                  onTap: () {
+                                  onTap: () async {
                                     setState(() {
                                       ontrip = false;
                                       complete = false;
                                       pending = false;
                                       inprocess = !inprocess;
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'process': FieldValue.arrayUnion(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'pending': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'complete': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'ontrip': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
                                     });
                                   },
                                   child: Row(
@@ -500,12 +571,44 @@ class _UpdateTaskState extends State<UpdateTask> {
                                 ),
                                 InkWell(
                                   splashColor: Colors.white,
-                                  onTap: () {
+                                  onTap: () async {
                                     setState(() {
                                       ontrip = false;
                                       complete = false;
                                       inprocess = false;
                                       pending = !pending;
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'pending': FieldValue.arrayUnion(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'process': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'ontrip': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'complete': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
                                     });
                                   },
                                   child: Row(
@@ -538,13 +641,46 @@ class _UpdateTaskState extends State<UpdateTask> {
                                 ),
                                 InkWell(
                                   splashColor: Colors.white,
-                                  onTap: () {
+                                  onTap: () async {
                                     setState(() {
                                       ontrip = false;
                                       inprocess = false;
                                       pending = false;
                                       complete = !complete;
                                     });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'complete': FieldValue.arrayUnion(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'process': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'ontrip': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .update({
+                                      'pending': FieldValue.arrayRemove(
+                                          [widget.model.taskId])
+                                    });
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

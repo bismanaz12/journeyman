@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mechanic_app/customertask.dart';
+import 'package:mechanic_app/notescreen.dart';
 import 'package:mechanic_app/taskmodel.dart';
 
 class CompleteTaskScreen extends StatelessWidget {
@@ -172,7 +173,12 @@ class CompleteTaskScreen extends StatelessWidget {
                       textScaleFactor: 7,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Screenover()));
+                      },
                       child: Text(
                         'Add Note',
                         style: TextStyle(
