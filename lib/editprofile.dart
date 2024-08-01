@@ -4,15 +4,12 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:mechanic_app/customerprofile.dart';
 
 import 'package:mechanic_app/imagepicker.dart';
-import 'package:mechanic_app/searchscreen.dart';
-import 'package:mechanic_app/technicianprofile.dart';
+import 'package:mechanic_app/login.dart';
+
 import 'package:mechanic_app/usermodel.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -586,7 +583,7 @@ class _EditprofileState extends State<Editprofile> {
                                 : model.name,
                             'address': addresscon.text,
                             'persontype': 'customer',
-                            'techId':'',
+                            'techId': '',
                             'bio': '',
                             'service': '',
                             'image': pro.image != null ? url : ''
@@ -594,7 +591,7 @@ class _EditprofileState extends State<Editprofile> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CustomerProfile()));
+                                  builder: (context) => Login_Screen_2()));
                         } else {
                           showDialog(
                               context: context,
@@ -678,7 +675,7 @@ class _EditprofileState extends State<Editprofile> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => TechnicianProfile()));
+                                  builder: (context) => Login_Screen_2()));
                         } else {
                           showDialog(
                               context: context,

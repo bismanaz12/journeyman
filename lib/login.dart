@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mechanic_app/editprofile.dart';
 import 'package:mechanic_app/forgot.dart';
+import 'package:mechanic_app/homescreen.dart';
 import 'package:mechanic_app/newpassword.dart';
 import 'package:mechanic_app/passupdates.dart';
 import 'package:mechanic_app/signup.dart';
@@ -139,7 +140,7 @@ class _Login_Screen_2State extends State<Login_Screen_2> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Editprofile()));
+                                builder: (context) => Home_Screen()));
                       }
                     }
                   },
@@ -153,7 +154,6 @@ class _Login_Screen_2State extends State<Login_Screen_2> {
                     ),
                   ),
                 ),
-               
                 SizedBox(
                   height: _mediaQuery.size.height * .01,
                 ),

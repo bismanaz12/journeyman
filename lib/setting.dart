@@ -67,6 +67,13 @@ class Setting_Screen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            Enable_Buttom(
+              text: 'Status',
+            ),
+            Divider(),
+            SizedBox(
+              height: 10,
+            ),
             Enable_Buttom(text: 'Show Password'),
             Divider(),
             SizedBox(

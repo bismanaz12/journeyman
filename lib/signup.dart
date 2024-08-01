@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mechanic_app/editprofile.dart';
 import 'package:mechanic_app/login.dart';
 import 'package:mechanic_app/passupdates.dart';
 import 'package:mechanic_app/usermodel.dart';
@@ -214,6 +215,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   await auth.createUserWithEmailAndPassword(
                                       email: email.text, password: pass.text);
                               Usermodel model = Usermodel(
+                                  status: 0,
                                   ontrip: [],
                                   pending: [],
                                   cancel: [],
@@ -243,7 +245,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Login_Screen_2()));
+                                    builder: (context) => Editprofile()));
                           }
                         },
                         child: Text('Signup'),

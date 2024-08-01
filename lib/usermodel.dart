@@ -16,9 +16,11 @@ class Usermodel {
   List<String> cancel;
   List<String> ontrip;
   List<String> pending;
+  int status;
 
   Usermodel(
       {required this.email,
+      required this.status,
       required this.techId,
       required this.id,
       required this.name,
@@ -50,7 +52,8 @@ class Usermodel {
       'cancel': cancel,
       'process': process,
       'ontrip': ontrip,
-      'pending': pending
+      'pending': pending,
+      'status':status
     };
   }
 
@@ -63,6 +66,7 @@ class Usermodel {
         address: map['address'],
         bio: map['bio'],
         image: map['image'],
+        status:map['status'],
         service: map['service'],
         persontype: map['persontype'],
         techId: map['techId'],

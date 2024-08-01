@@ -35,7 +35,7 @@ class ProfileList extends StatelessWidget {
                       text,
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: media.size.height * 0.02 * 1.3,
+                          fontSize: media.size.height * 0.02,
                           fontWeight: FontWeight.w400),
                     ),
                   ),
@@ -49,7 +49,7 @@ class ProfileList extends StatelessWidget {
                     child: Text(
                       text2,
                       style: TextStyle(
-                          color: Color.fromARGB(255, 211, 205, 205),
+                          color: Colors.blue[900],
                           fontSize: media.size.height * 0.02),
                     ),
                   ),

@@ -1,9 +1,8 @@
-import 'dart:collection';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mechanic_app/completetask.dart';
+import 'package:mechanic_app/features2.dart';
 import 'package:mechanic_app/taskmodel.dart';
 import 'package:mechanic_app/usermodel.dart';
 
@@ -106,7 +105,7 @@ class _UpdateTaskState extends State<UpdateTask> {
                           child: StreamBuilder(
                               stream: FirebaseFirestore.instance
                                   .collection('users')
-                                  .doc(widget.model.techId)
+                                  .doc(FirebaseAuth.instance.currentUser!.uid)
                                   .snapshots(),
                               builder: (context, snapshot) {
                                 var tech = snapshot.data!.data();
@@ -181,7 +180,7 @@ class _UpdateTaskState extends State<UpdateTask> {
                   StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection('users')
-                          .doc(widget.model.techId)
+                          .doc(FirebaseAuth.instance.currentUser!.uid)
                           .snapshots(),
                       builder: (context, snapshot) {
                         if (snapshot.hasData) {
@@ -230,10 +229,12 @@ class _UpdateTaskState extends State<UpdateTask> {
                     padding: const EdgeInsets.only(left: 10),
                     child: InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => ProductDetail()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ProductDetail(
+                                      model: widget.model,
+                                    )));
                       },
                       child: Text(
                         'view details',

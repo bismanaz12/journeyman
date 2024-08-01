@@ -76,12 +76,12 @@ class _AddnoteState extends State<Addnote> {
                     photo: url,
                     note: txt,
                     productname: '',
-                    fuelefficiency: '',
-                    engineoil: '',
-                    enginetype: '',
+                    fuelefficiency: '200mpg',
+                    engineoil: 'good',
+                    enginetype: 'V6',
                     customerId: FirebaseAuth.instance.currentUser!.uid,
-                    horsepower: '',
-                    torque: '');
+                    horsepower: '300HP',
+                    torque: '300ml');
 
                 await FirebaseFirestore.instance
                     .collection('tasks')

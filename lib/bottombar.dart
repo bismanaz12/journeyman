@@ -55,22 +55,24 @@ class _BottomBarState extends State<BottomBar> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.blue[900],
+        unselectedItemColor: Colors.black,
         onTap: ontap,
         currentIndex: currentIndex,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.task), label: 'Task'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.task_outlined), label: 'Tasks'),
           BottomNavigationBarItem(
             icon: Container(
               decoration: BoxDecoration(
-                color: currentIndex == 2 ? Colors.blue : Colors.transparent,
+                color:
+                    currentIndex == 2 ? Colors.blue[900] : Colors.transparent,
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 Icons.camera_alt_outlined,
-                color: currentIndex == 2 ? Colors.white : Colors.grey,
+                color: currentIndex == 2 ? Colors.blue[900] : Colors.black,
               ),
               padding: EdgeInsets.all(8),
             ),

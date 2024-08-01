@@ -1,29 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mechanic_app/bottombar.dart';
-import 'package:mechanic_app/chatscreen.dart';
-import 'package:mechanic_app/completetask.dart';
-import 'package:mechanic_app/customertask.dart';
-import 'package:mechanic_app/features.dart';
-import 'package:mechanic_app/addnote.dart';
 import 'package:mechanic_app/addtask.dart';
 import 'package:mechanic_app/customerprofile.dart';
-import 'package:mechanic_app/editprofile.dart';
+import 'package:mechanic_app/customertask.dart';
+
 import 'package:mechanic_app/firebase_options.dart';
-import 'package:mechanic_app/flowchart.dart';
-import 'package:mechanic_app/homefunctions.dart';
 import 'package:mechanic_app/homescreen.dart';
+
 import 'package:mechanic_app/imagepicker.dart';
-import 'package:mechanic_app/login.dart';
-import 'package:mechanic_app/newpassword.dart';
-import 'package:mechanic_app/notescreen.dart';
-import 'package:mechanic_app/passupdates.dart';
-import 'package:mechanic_app/security.dart';
-import 'package:mechanic_app/signup.dart';
+
 import 'package:mechanic_app/splashscreen.dart';
-import 'package:mechanic_app/taskscreen.dart';
-import 'package:mechanic_app/technicianprofile.dart';
-import 'package:mechanic_app/updatetask.dart';
+
 import 'package:mechanic_app/userprovider.dart';
 import 'package:provider/provider.dart';
 
@@ -69,7 +56,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 227, 225, 231)),
           useMaterial3: true,
         ),
-        home: CusomterTask());
+        home: Splash_Screen());
   }
 }
 
