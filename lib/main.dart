@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mechanic_app/addtask.dart';
+import 'package:mechanic_app/bottombar.dart';
 import 'package:mechanic_app/customerprofile.dart';
 import 'package:mechanic_app/customertask.dart';
 
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 227, 225, 231)),
           useMaterial3: true,
         ),
-        home: Splash_Screen());
+        home: BottomBar());
   }
 }
 

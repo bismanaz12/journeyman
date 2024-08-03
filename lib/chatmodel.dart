@@ -9,6 +9,7 @@ class Chatmodel {
   String message;
   DateTime time;
   messageType type;
+  bool read;
 
   Chatmodel(
       {required this.Name,
@@ -18,6 +19,7 @@ class Chatmodel {
       required this.receiverId,
       required this.senderId,
       required this.time,
+      required this.read,
       required this.type});
 
   Map<String, dynamic> tomap() {
@@ -36,25 +38,28 @@ class Chatmodel {
               : type == messageType.voice
                   ? 'voice'
                   : 'image',
+      'read': read
     };
   }
 
   factory Chatmodel.fromMap(Map<String, dynamic> map) {
     return Chatmodel(
-        Name: map['name'],
-        chatId: map['chatId'],
-        image: map['image'],
-        message: map['message'],
-        receiverId: map['receiverId'],
-        senderId: map['senderId'],
-        time: (map['time'] as Timestamp).toDate(),
-        type: map['type'] == 'text'
-            ? messageType.text
-            : map['type'] == 'image'
-                ? messageType.image
-                : map['type'] == 'video'
-                    ? messageType.video
-                    : messageType.voice);
+      Name: map['name'],
+      chatId: map['chatId'],
+      image: map['image'],
+      message: map['message'],
+      receiverId: map['receiverId'],
+      senderId: map['senderId'],
+      time: (map['time'] as Timestamp).toDate(),
+      read: map['read'],
+      type: map['type'] == 'text'
+          ? messageType.text
+          : map['type'] == 'image'
+              ? messageType.image
+              : map['type'] == 'video'
+                  ? messageType.video
+                  : messageType.voice,
+    );
   }
 }
 

@@ -28,8 +28,10 @@ class CusomterTask extends StatelessWidget {
         child: Column(
           children: [
             StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection('tasks').snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection('tasks')
+                    .where('takeTask', isEqualTo: false)
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     var model = snapshot.data!.docs

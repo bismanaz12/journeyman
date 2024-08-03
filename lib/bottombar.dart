@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mechanic_app/chats.dart';
 import 'package:mechanic_app/customertask.dart';
 import 'package:mechanic_app/homescreen.dart';
 import 'package:mechanic_app/tasksdetail.dart';
@@ -29,7 +30,7 @@ class _BottomBarState extends State<BottomBar> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              CameraScreen(), // Replace with your Camera screen widget
+              Chats(), // Replace with your Camera screen widget
         ),
       );
     } else {

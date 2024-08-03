@@ -9,11 +9,13 @@ class Bubble extends StatelessWidget {
       required this.txt,
       required this.name,
       required this.me,
+      required this.read,
       required this.type});
   bool me;
   String name;
   String img;
   String txt;
+  bool read;
   messageType type;
   @override
   Widget build(BuildContext context) {
@@ -36,17 +38,42 @@ class Bubble extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 4, horizontal: 16),
                                 decoration: BoxDecoration(
-                                    color: Colors.teal[900],
+                                    color: Color.fromARGB(255, 225, 221, 221),
                                     borderRadius: const BorderRadius.only(
                                       topRight: Radius.elliptical(-30, 50),
                                       topLeft: Radius.circular(15),
                                       bottomLeft: Radius.circular(15),
                                       bottomRight: Radius.circular(15),
                                     )),
-                                child: Text(
-                                  txt,
-                                  style: const TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      txt,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontSize: 20),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          'time',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 19, 27, 105)),
+                                        ),
+                                        Icon(
+                                          read
+                                              ? Icons.done_all_rounded
+                                              : Icons.check,
+                                          color: read
+                                              ? Colors.green
+                                              : Colors.black,
+                                        ),
+                                      ],
+                                    )
+                                  ],
                                 ))),
                       ],
                     ),
@@ -71,8 +98,31 @@ class Bubble extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 4, horizontal: 10),
                                       height: 200,
-                                      child: CustomPlayer(videoplayer: txt),
+                                      width: 170,
+                                      child: CustomPlayer(
+                                        videoPlayer: txt,
+                                      ),
                                     ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          'time',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 19, 27, 105)),
+                                        ),
+                                        Icon(
+                                          read
+                                              ? Icons.done_all_rounded
+                                              : Icons.check,
+                                          color: read
+                                              ? Colors.green
+                                              : Colors.black,
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
@@ -114,6 +164,26 @@ class Bubble extends StatelessWidget {
                                       height: 200,
                                       child: Image.network(txt),
                                     ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          'time',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Color.fromARGB(
+                                                  255, 19, 27, 105)),
+                                        ),
+                                        Icon(
+                                          read
+                                              ? Icons.done_all_rounded
+                                              : Icons.check,
+                                          color: read
+                                              ? Colors.green
+                                              : Colors.black,
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ),
@@ -133,19 +203,19 @@ class Bubble extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(img),
-                          radius: 27,
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
+                        // CircleAvatar(
+                        //   backgroundImage: NetworkImage(img),
+                        //   radius: 27,
+                        // ),
+                        // const SizedBox(
+                        //   width: 3,
+                        // ),
                         Expanded(
                           child: Container(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 4, horizontal: 16),
                               decoration: const BoxDecoration(
-                                  color: Colors.teal,
+                                  color: Color.fromARGB(255, 163, 160, 160),
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.elliptical(-30, 50),
                                     topRight: Radius.circular(15),
@@ -156,16 +226,26 @@ class Bubble extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(name,
-                                      style: const TextStyle(
-                                          color: Colors.yellow,
-                                          fontFamily: 'Simple',
-                                          fontSize: 20)),
+                                  // Text(name,
+                                  //     style: const TextStyle(
+                                  //         color: Colors.yellow,
+                                  //         fontFamily: 'Simple',
+                                  //         fontSize: 20)),
                                   Text(
                                     txt,
                                     style: const TextStyle(
                                         color: Colors.white, fontSize: 20),
                                   ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      'time',
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color:
+                                              Color.fromARGB(255, 19, 27, 105)),
+                                    ),
+                                  )
                                 ],
                               )),
                         ),
@@ -184,13 +264,13 @@ class Bubble extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(img),
-                                  radius: 27,
-                                ),
-                                const SizedBox(
-                                  width: 3,
-                                ),
+                                // CircleAvatar(
+                                //   backgroundImage: NetworkImage(img),
+                                //   radius: 27,
+                                // ),
+                                // const SizedBox(
+                                //   width: 3,
+                                // ),
                                 Expanded(
                                     child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -199,8 +279,25 @@ class Bubble extends StatelessWidget {
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 4, horizontal: 10),
-                                      height: 200,
-                                      child: CustomPlayer(videoplayer: txt),
+                                      height: 240,
+                                      width: 170,
+                                      child: Column(
+                                        children: [
+                                          CustomPlayer(
+                                            videoPlayer: txt,
+                                          ),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              'time',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Color.fromARGB(
+                                                      255, 19, 27, 105)),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 )),
@@ -231,13 +328,13 @@ class Bubble extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(img),
-                                  radius: 27,
-                                ),
-                                const SizedBox(
-                                  width: 3,
-                                ),
+                                // CircleAvatar(
+                                //   backgroundImage: NetworkImage(img),
+                                //   radius: 27,
+                                // ),
+                                // const SizedBox(
+                                //   width: 3,
+                                // ),
                                 Expanded(
                                     child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -246,8 +343,28 @@ class Bubble extends StatelessWidget {
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 4, horizontal: 10),
-                                      height: 200,
-                                      child: Image.network(txt),
+                                      height: 240,
+                                      width: 170,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Image.network(
+                                            txt,
+                                            height: 200,
+                                          ),
+                                          Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              'time',
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Color.fromARGB(
+                                                      255, 19, 27, 105)),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 )),

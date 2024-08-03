@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 class ImagePickerProvider extends ChangeNotifier {
   File? image;
+  File? video;
   List<File>? photo = [];
 
   Imagepicker() async {
@@ -35,6 +36,21 @@ class ImagePickerProvider extends ChangeNotifier {
 
   setphotonull(value) {
     photo = value;
+    notifyListeners();
+  }
+
+  pickvideo() async {
+    ImagePicker videopicker = ImagePicker();
+    XFile? pickedvideo =
+        await videopicker.pickVideo(source: ImageSource.gallery);
+    if (pickedvideo != null) {
+      video = File(pickedvideo.path);
+    }
+    notifyListeners();
+  }
+
+  setvideonull(value) {
+    video = value;
     notifyListeners();
   }
 }
